@@ -4,7 +4,6 @@
 
 -- /usr/share/nvim/runtime/plugin
 
--- https://neovim.discourse.group/t/how-to-disable-builtin-plugins/787/6
 --[[
 local builtin_plugins = {
 	'2html_plugin',          -- Found on completion and not on the manual
@@ -42,26 +41,25 @@ end
 -- it will persist automatically without having to change your config every time
 -- you change your taste about the current colorscheme :)
 
-vim.o.termguicolors = true      -- Enable 24-bit RGB colors
+vim.o.termguicolors = true          -- Enable 24-bit RGB colors
 
-vim.o.updatetime = 1000         -- Time in ms to trigger CursorHold
+vim.o.updatetime = 1000             -- Time in ms to trigger CursorHold
 
-vim.g.netrw_banner = 0          -- Hide netrw banner
-vim.g.netrw_altv = 1            -- Open splits to the right
-vim.g.netrw_alto = 1            -- Open splits to the bottom
+vim.g.netrw_banner = 0              -- Hide netrw banner
+vim.g.netrw_altv = 1                -- Open splits to the right
+vim.g.netrw_alto = 1                -- Open splits to the bottom
 
-vim.opt.path:append("**")       -- Search for files recursively in subdirectories
+vim.opt.path:append("**")           -- Search for files recursively in subdirectories
 
-vim.o.splitbelow = true         -- Open horizontal splits below the current window
-vim.o.splitright = true         -- Open vertical splits to the right of the current window
+vim.o.splitbelow = true             -- Open horizontal splits below the current window
+vim.o.splitright = true             -- Open vertical splits to the right of the current window
 
-vim.o.spelllang = "en,pt_br"    -- set spell check languages
+vim.o.spelllang = "en,pt_br"        -- Set spell check languages
 
-vim.o.number = true             -- Show line numbers
-vim.o.relativenumber = true     -- Show relative line numbers
+vim.o.number = true                 -- Show line numbers
+vim.o.relativenumber = true         -- Show relative line numbers
 
-vim.o.signcolumn = "yes"        -- Always show the sign column
-vim.o.cursorline = true         -- Highlight the current line
+vim.o.cursorline = true             -- Highlight the current line
 
 -- TODO
 -- Configure completion behavior
@@ -117,6 +115,9 @@ vim.o.wildmenu = true               -- Enable cmdline completion menu
 vim.o.wildignorecase = true         -- Ignore case when doing completion (file and directories)
 vim.o.winborder = "rounded"         -- Default border style of floating windows
 
+vim.o.pumblend = 0                  -- Enables pseudo-transparency for the popup-menu
+vim.o.winblend = 0                  -- Enables pseudo-transparency for a floating window
+
 vim.o.showbreak = "↪"               -- Character for `wrap` text
 
 -- Characters for the option `:set list`
@@ -134,10 +135,18 @@ vim.opt.listchars={
 	nbsp = "✕",              -- "×", "+", "␣", "☠"
 }
 
--- TODO
--- vim.o.foldmethod = "expr"        -- Fold Method `:h fold-methods`
--- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter for folding
--- vim.o.foldlevel = 99
+vim.opt.fillchars = {
+  foldopen  = "▽", -- "▢", "⋁", "⨈", "▽", "▼", "-"
+  foldclose = "⫸", -- "■", ">", "⫸", "▷", "▶", "+"
+  foldsep = " ", -- "│", "|"
+}
+
+vim.o.signcolumn = "yes"            -- Always show the sign column
+vim.o.foldcolumn = "1"              -- Always show the fold column
+
+vim.o.foldmethod = "manual"         -- Fold Method `:h fold-methods`
+vim.o.foldlevelstart = 99           -- Fold Level Start `:h foldlevelstart`
+vim.o.foldlevel = 99                -- Fold Level `:h foldlevel`
 
 -- I don't know if I need this yet
 -- vim.o.diffopt:append("algorithm:patience") -- Diff algorithm `:h diffopt`
@@ -149,6 +158,8 @@ vim.o.writebackup = false           -- Disable write backup
 vim.o.undofile = true               -- Enable persistent undo
 vim.o.undodir = vim.fn.expand("$HOME/.local/state/nvim/undo/") -- Set undo directory
 
+-- vim.opt.fillchars:append("wbr:=") -- Windows title fill char
+-- vim.o.winbar = "%m %t" -- Windows title
 vim.o.title = true -- Enable updating the terminal/window title
 vim.o.titlestring = '%t (%{expand("%:~:h")}) (nvim)' -- Format for the title: filename (dir) (nvim)
 
