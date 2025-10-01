@@ -17,6 +17,8 @@ this serves to me as a starting point.
 - AutoCMD for automatically update the leadmultispace listchar based on tabstop
 - Organize the highlights in the `autocmd.lua`
 - Folds
+  - ':h mkview' and ':h loadview'
+  - the idea is to save and load folds automatically
 - Completeopt - `options.lua`
 - LSP
 - Treesitter
@@ -32,9 +34,11 @@ this serves to me as a starting point.
 - Vimwiki       - https://github.com/vimwiki/vimwiki
 - ToggleTerm    - https://github.com/akinsho/toggleterm.nvim
                 - https://github.com/stevenctl/dotfiles/blob/master/config/vim/nvim/lua/user/terminals.lua
-
 - No Neck Pain  - https://github.com/shortcuts/no-neck-pain.nvim
 - Zen Mode      - https://github.com/folke/zen-mode.nvim
+- UFO           - https://github.com/kevinhwang91/nvim-ufo
+- Origami       - https://github.com/chrisgrieser/nvim-origami
+                - https://gist.github.com/AdamFrenzen/497ea55d4c49699d96c3ac0e8c4ea094
 
 **Files:**
 
@@ -66,7 +70,7 @@ source $HOME/.bashrc
 
 ## Dir Structure
 
-```
+```txt
 nvim-base/
 ├── after/
 │   └── ftplugin/
@@ -99,6 +103,7 @@ nvim-base/
 - Nvim Lua Guide `:help lua-guide`
 - [vim.how](https://vim.how/)
 - [neovim.io](https://neovim.io/doc/)
+- [Vim Cheatsheet](https://quickref.me/vim)
 - [Learning Vim in 2014](https://benmccormick.org/learning-vim-in-2014/)
 - [Vimcasts](http://vimcasts.org/)
 - [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/)
