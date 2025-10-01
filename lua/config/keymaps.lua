@@ -8,9 +8,9 @@ local set = vim.keymap.set
 
 -- [ CONFIG ] ----------------------------------------------------------------------------------------------------------
 
-set("n", "<leader>o", ":w<CR>:source %<CR>", { desc = "[N] Source the entire file (lua)" })
-set("n", "<leader>l", "<CMD>.lua<CR>",       { desc = "[N] Execute the current line in lua" })
-set("v", "<leader>l", ":lua<CR>",            { desc = "[N] Execute the selected code in lua" })
+set("n", "<leader>o", ":update<CR>:source %<CR>", { desc = "[N] Source the entire file (lua)" })
+set("n", "<leader>l", "<CMD>.lua<CR>",            { desc = "[N] Execute the current line in lua" })
+set("v", "<leader>l", ":lua<CR>",                 { desc = "[N] Execute the selected code in lua" })
 
 -- ABBREVIATIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -26,9 +26,17 @@ set("n", "J", "mzJ`z", { desc = "[N] Join lines while keeping the cursor in the 
 
 set({ "n", "v" }, "<leader>/", "<CMD>let @/=''<CR>", { desc = "[N] Clears the search highlight" })
 
-set("n", "<leader>h", ":h ", { desc = "[N] Search help" })
+set("n", "<leader>h", ":vert h ", { desc = "[N] Search help" })
 
-set("n", "<leader>x", ":!chmod +x %<CR>:filetype detect<CR>", { desc = "[N] Search help" })
+set({ "n", "v" }, "<leader>a", "<ESC>govG$", { desc = "[N] Select all text" })
+
+set("n", "<leader>x", function()
+	if vim.o.filetype == "" then
+		vim.cmd.update()
+		vim.cmd("!chmod +x %")
+		vim.cmd.filetype("detect")
+	end
+end, { desc = "[N] Make the current bash file executable" })
 
 -- ABNT PROBLEM  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -59,11 +67,12 @@ set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "[N] Move the current 
 set("n", "<leader>fp", ":find ",           { desc = "[N] Search file" })
 set("n", "<leader>e", "<CMD>Explore!<CR>", { desc = "[N] Open Netrw"  })
 
-set("n", "<leader>bb", ":buffer ",         { desc = "[N] Search buffer"             })
-set("n", "<leader>bd", "<CMD>bdelete<CR>", { desc = "[N] Deletes current buffer"    })
+set("n", "<leader>bb", ":buffer ",         { desc = "[N] Search buffer" })
+set("n", "<leader>bd", "<CMD>bdelete<CR>", { desc = "[N] Deletes current buffer" })
 
-set("n", "<leader>q", "<CMD>quit<CR>",   { desc = "[N] Quit"  })
-set("n", "<leader>w", "<CMD>update<CR>", { desc = "[N] Saves the current buffer"  })
+set("n", "<leader>q", "<CMD>quit<CR>",   { desc = "[N] Quit" })
+set("n", "<leader>Q", "<CMD>q!<CR>",     { desc = "[N] Force quit" })
+set("n", "<leader>w", "<CMD>update<CR>", { desc = "[N] Saves the current buffer" })
 set("n", "<leader>W", "<CMD>wa<CR>",     { desc = "[N] Write all changed buffers" })
 
 -- SEARCH AND REPLACE  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -94,6 +103,8 @@ set({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true
 -- Better scroll
 set({ "n", "v" }, "<C-u>", "<C-u>zz")
 set({ "n", "v" }, "<C-d>", "<C-d>zz")
+set({ "n", "v" }, "<C-f>", "<C-f>zz")
+set({ "n", "v" }, "<C-b>", "<C-b>zz")
 
 -- Better next/previous search (with unfolding when necessary)
 set({ "n", "v" }, "n", "nzzzv")
