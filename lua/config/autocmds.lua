@@ -104,18 +104,24 @@ autocmd({ "ColorScheme", "VimEnter" }, {
 })
 -- I don't know were to put this list but here we go
 -- DARK colorschemes:
--- darkblue   -- Need to alter some colors
--- evening    -- Need to alter some colors
+-- retrobox   -- Need to alter some colors
 -- habamax    -- Need to alter some colors
--- koehler    -- Need to alter some colors
--- retrobox
--- slate      -- Need to alter some colors
 -- sorbet     -- Need to alter some colors
 -- unokai     -- Need to alter some colors
+-- slate      -- Need to alter some colors
+-- evening    -- Need to alter some colors
+-- zaibatsu   -- Need to alter some colors
+-- darkblue   -- Need to alter some colors
+-- ALTER ONE OF THOSE:
+  -- lunaperche
+  -- wildcharm
+  -- torte
+  -- koehler
+  -- elflord
+  -- industry
 -- LIGHT colorschemes:
--- default
--- morning   -- Need to alter some colors
--- quiet
 -- peachpuff -- Need to alter some colors
--- wildcharm -- Need to alter some colors
+-- retrobox  -- Need to alter some colors
+-- morning   -- Need to alter some colors
 -- zellner   -- Need to alter some colors
+-- default   -- Need to alter some colors
