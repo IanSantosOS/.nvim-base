@@ -1,22 +1,16 @@
+-- [[ ABBREVIATIONS ]] =================================================================================================
+
+set("ia", "#!", "#!/usr/bin/env bash", { desc = "[A] Shebang Bash" })
+
 -- [[ KEYMAPS ]] =======================================================================================================
 
--- [ VARIABLES ] -------------------------------------------------------------------------------------------------------
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-local set = vim.keymap.set
-
--- [ CONFIG ] ----------------------------------------------------------------------------------------------------------
+-- [ CONFIG RELATED ] --------------------------------------------------------------------------------------------------
 
 set("n", "<leader>o", ":update<CR>:source %<CR>", { desc = "[N] Source the entire file (lua)" })
 set("n", "<leader>l", "<CMD>.lua<CR>",            { desc = "[N] Execute the current line in lua" })
 set("v", "<leader>l", ":lua<CR>",                 { desc = "[N] Execute the selected code in lua" })
 
--- ABBREVIATIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-set("ia", "#!", "#!/usr/bin/env bash", { desc = "[A] Shebang Bash" })
-
--- SINGLE KEYMAPS  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ SINGLE KEYMAPS ] --------------------------------------------------------------------------------------------------
 
 set("i", "<C-r><C-v>", [[<C-r>. = <C-r>"]], { desc = "[N] Create a variable with the text you replaced" })
 
@@ -38,21 +32,29 @@ set("n", "<leader>x", function()
 	end
 end, { desc = "[N] Make the current bash file executable" })
 
--- ABNT PROBLEM  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ ABNT PROBLEM ] ----------------------------------------------------------------------------------------------------
 
 -- ABNT2 doesn't recognize CTRL-]
 -- If you are not brazillian you can ignore this
 set({ "n", "v" }, "", "<C-]>", { desc = "[N] Jump to a tag"})
 set({ "i", "c" }, "", "<C-]>", { desc = "[N] Abbreviation"})
 
--- TOGGLE COLORS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ TOGGLE COLORS ] ---------------------------------------------------------------------------------------------------
 
 set("n", "<leader>tb", "<CMD>lua ToggleTransparentBackground()<CR>", { desc = "[N] Toggle transparent background" })
 
 set({ "n", "v" }, "<leader>t8", '<CMD>lua ToggleColorColumn("81")<CR>',  { desc = "[N] Toggle highlight column 81"  })
 set({ "n", "v" }, "<leader>t2", '<CMD>lua ToggleColorColumn("121")<CR>', { desc = "[N] Toggle highlight column 121" })
 
--- MOVE LINES  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ SEARCH AND REPLACE ] ----------------------------------------------------------------------------------------------
+
+set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "[N] Search and replace the word under the cursor globally (Case Insensitive)" })
+
+set("n", "<leader>sS", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]],
+    { desc = "[N] Search and replace the word under the cursor globally (Case Sensitive)" })
+
+-- [ MOVE LINES ] ------------------------------------------------------------------------------------------------------
 
 -- I want to use alt/meta key for all of these, but for some reason it isn't working, so for now
 -- I will use the <leader> and Uppercase letters
@@ -62,7 +64,7 @@ set("n", "<leader>k", ":m .-2<CR>==", { silent = true, desc = "[N] Move the curr
 set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "[N] Move the current selection up" })
 set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "[N] Move the current selection down" })
 
--- FILE RELATED  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ FILE RELATED ] ----------------------------------------------------------------------------------------------------
 
 set("n", "<leader>fp", ":find ",           { desc = "[N] Search file" })
 set("n", "<leader>e", "<CMD>Explore!<CR>", { desc = "[N] Open Netrw"  })
@@ -75,15 +77,7 @@ set("n", "<leader>Q", "<CMD>q!<CR>",     { desc = "[N] Force quit" })
 set("n", "<leader>w", "<CMD>update<CR>", { desc = "[N] Saves the current buffer" })
 set("n", "<leader>W", "<CMD>wa<CR>",     { desc = "[N] Write all changed buffers" })
 
--- SEARCH AND REPLACE  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "[N] Search and replace the word under the cursor globally (Case Insensitive)" })
-
-set("n", "<leader>sS", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]],
-	{ desc = "[N] Search and replace the word under the cursor globally (Case Sensitive)" })
-
--- AUTO CLOSE  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ AUTO CLOSE ] ------------------------------------------------------------------------------------------------------
 
 set("i", "(<CR>",  "(<CR>)<C-o>O")
 set("i", "(<C-j>", "(<CR>)<C-o>O")
@@ -94,7 +88,7 @@ set("i", "[<C-j>", "[<CR>]<C-o>O")
 set("i", "{<CR>",  "{<CR>}<C-o>O")
 set("i", "{<C-j>", "{<CR>}<C-o>O")
 
--- BETTER MOVEMENT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ BETTER MOVEMENT ] -------------------------------------------------------------------------------------------------
 
 -- Better up/down (`gj` in case I use `:set wrap` and `zz` to center the cursor)
 set({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -110,11 +104,15 @@ set({ "n", "v" }, "<C-b>", "<C-b>zz")
 set({ "n", "v" }, "n", "nzzzv")
 set({ "n", "v" }, "N", "Nzzzv")
 
--- INDENTING RELATED - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ INDENTING RELATED ] -----------------------------------------------------------------------------------------------
 
 -- Better indenting
 set("v", "<", "<gv")
 set("v", ">", ">gv")
+
+set("n", "<leader>it", function()
+	vim.o.list = not vim.o.list
+end, { desc = "[N] Toggle list (from listchars)" })
 
 set("n", "<leader>iw", function()
 	if vim.o.syntax == "whitespace" then
@@ -124,11 +122,7 @@ set("n", "<leader>iw", function()
 	end
 end, { desc = "[N] Toggle syntax whitespace" })
 
-set("n", "<leader>it", function()
-	vim.o.list = not vim.o.list
-end, { desc = "[N] Toggle list (from listchars)" })
-
--- LSP - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ LSP ] -------------------------------------------------------------------------------------------------------------
 
 -- Maybe this should be in the `keys_plugins.lua` file.
 set("n", "<leader>ff", vim.lsp.buf.format,      { desc = "[N] Format the current buffer using LSP" })
@@ -138,7 +132,7 @@ set("n", "<leader>dr", vim.lsp.buf.references,  { desc = "[N] Show all reference
 set("n", "<leader>ca", vim.lsp.buf.code_action,
     { desc = "[N] Show available code actions for the current line or selection" })
 
--- CLIPBOARD - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ CLIPBOARD ] -------------------------------------------------------------------------------------------------------
 
 set({ "n", "v" }, "<leader>P",  [["+p]],  { desc = "[N] Paste from the system clipboard"     })
 set("n",          ",p",         [["0p]],  { desc = "[N] Paste last thing yanked, not deleted"})
@@ -150,7 +144,7 @@ set({ "n", "v" }, "<leader>y",  [["+y]],  { desc = "[N] Yank selected text into 
 
 set({ "n", "v" }, "<leader>dd",  [["_d]],  { desc = "[N] Delete without yanking" })
 
--- TAB - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ TAB ] -------------------------------------------------------------------------------------------------------------
 
 set("n", "<leader>tn", "<CMD>tabnew<CR>",      { desc = "[N] Creates new tab"       })
 set("n", "<leader>tx", "<CMD>tabclose<CR>",    { desc = "[N] Closes current tab"    })
@@ -161,7 +155,7 @@ set("n", "<leader>nt", "<CMD>tabnext<CR>",     { desc = "[N] Moves to previous t
 set("n", "<leader>te", ':tabedit <C-r>=escape(expand("%:p:h"), " ")<CR>/<CR>',
     { desc = "[N] Opens a new tab with the current buffer's path" })
 
--- WINDOW/PANEL  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- [ WINDOW/PANEL ] ----------------------------------------------------------------------------------------------------
 
 set("n", "<C-k>", "<CMD>wincmd k<CR>", { desc = "[N] Move to the top panel"    })
 set("n", "<C-j>", "<CMD>wincmd j<CR>", { desc = "[N] Move to the bottom panel" })
@@ -183,7 +177,7 @@ set("n", "<Down>",  "<CMD>resize -5<CR>", { desc = "[N] Resize top/bottom -5" })
 set("n", "<Left>",  "<CMD>vertical resize -10<CR>", { desc = "[N] Resize left/right -10" })
 set("n", "<Right>", "<CMD>vertical resize +10<CR>", { desc = "[N] Resize left/right +10" })
 
--- [ FUNCTIONS ] -------------------------------------------------------------------------------------------------------
+-- [[ FUNCTIONS ]] =====================================================================================================
 
 function ToggleColorColumn(num)
 	if vim.wo.colorcolumn == num then

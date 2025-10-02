@@ -136,9 +136,9 @@ vim.opt.listchars={
 }
 
 vim.opt.fillchars = {
-  foldopen  = "▽", -- "▢", "⋁", "⨈", "▽", "▼", "-"
-  foldclose = "⫸", -- "■", ">", "⫸", "▷", "▶", "+"
-  foldsep = " ", -- "│", "|"
+	foldopen  = "▽", -- "▢", "⋁", "⨈", "▽", "▼", "-"
+	foldclose = "⫸", -- "■", ">", "⫸", "▷", "▶", "+"
+	foldsep = " ", -- "│", "|"
 }
 
 vim.o.signcolumn = "yes"            -- Always show the sign column

@@ -1,14 +1,5 @@
 -- [[ AUTOCMDS ]] ======================================================================================================
 
--- [ VARIABLES ] -------------------------------------------------------------------------------------------------------
-
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = function(group, opts)
-	return vim.api.nvim_create_augroup("CUSTOM_".. group, opts)
-end
-
--- [ CONFIG ] ----------------------------------------------------------------------------------------------------------
-
 -- EJS equals to html filetype
 autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = "*.ejs",

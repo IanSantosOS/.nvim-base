@@ -1,17 +1,19 @@
-vim.keymap.set("n", "<leader>rr", function()
+-- [[ OPTIONS ]] =======================================================================================================
+
+set("n", "<leader>rr", function()
 	vim.cmd.update()
-	vim.o.makeprg = "node %"
+	opt.makeprg = "node %"
 	vim.cmd.make()
 end, { desc = "[N] Run `node <file>`" })
 
-vim.keymap.set("n", "<leader>rd", function()
+set("n", "<leader>rd", function()
 	vim.cmd.update()
-	vim.o.makeprg = "node run dev"
+	opt.makeprg = "node run dev"
 	vim.cmd.make()
 end, { desc = "[N] Run `npm run dev`" })
 
-vim.keymap.set("n", "<leader>rs", function()
+set("n", "<leader>rs", function()
 	vim.cmd.update()
-	vim.o.makeprg = "node start"
+	opt.makeprg = "node start"
 	vim.cmd.make()
 end, { desc = "[N] Run `npm start`"   })
