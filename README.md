@@ -95,7 +95,7 @@ nvim-base/
 - [nvim.sh](https://nvim.sh/)
 - [Awesome Neovim](https://github.com/rockerBOO/awesome-neovim)
 
-### Tutorials
+### Vim Tutorials
 
 - Vim Tutor `:Tutor`
 - Vim User Manual `:help usr`
@@ -108,3 +108,9 @@ nvim-base/
 - [Vimcasts](http://vimcasts.org/)
 - [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/)
 - [vim-galore](https://github.com/mhinz/vim-galore)
+
+### Treesitter
+
+- Treesitter Help Page `:h treesitter`
+- [Official Treesitter Documentation](https://tree-sitter.github.io/tree-sitter/)
+- [Neovim and Tree-sitter: An Overview with Examples](https://thevaluable.dev/tree-sitter-neovim-overview/)
